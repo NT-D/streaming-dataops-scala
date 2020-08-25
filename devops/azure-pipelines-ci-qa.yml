@@ -12,5 +12,7 @@ steps:
   - script: sbt compile
     displayName: 'Compile scala code'
 
+  # TODO: Publish test results
+  # TODO: Calculate test coverage and publish it
   - script: sbt test
     displayName: 'Test scala code'
