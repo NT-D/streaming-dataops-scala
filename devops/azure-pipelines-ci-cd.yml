@@ -55,8 +55,14 @@ steps:
       dbfs rm dbfs:/FileStore/jars/streaming-dataops-scala_2.11-0.1.jar
       dbfs cp "./target/scala-2.11/streaming-dataops-scala_2.11-0.1.jar" dbfs:/FileStore/whls
     displayName: 'Upload jar file to DBFS(Databricks File System)'
+    env:
+      DATABRICKS_HOST: $(databricks-host)
+      DATABRICKS_TOKEN: $(databricks-token)
 
   - script: |
       databricks libraries install --cluster-id $(databricks-cluster-scala-id) --whl dbfs:/FileStore/whls/pyot-0.0.1-py3-none-any.whl
       databricks libraries install --cluster-id $(databricks-cluster-scala-id) --maven-coordinates com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.16
     displayName: 'Install package to a target cluster'
+    env:
+      DATABRICKS_HOST: $(databricks-host)
+      DATABRICKS_TOKEN: $(databricks-token)
