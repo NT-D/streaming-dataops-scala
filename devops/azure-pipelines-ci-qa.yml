@@ -1,0 +1,16 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  # TODO: Install specific version Java explicitly
+  # Azure Pipeline uses AdoptOpenJDK 1.8.0_265 as default and this is expected one, so I skip to install JDK
+  - script: java -version
+    displayName: 'Show java version'
+
+  # TODO: Install specific version sbt explicitly
+  # Azure Pipeline automatically install sbt when script uses sbt comment, so I skip to install sbt
+  - script: sbt compile
+    displayName: 'Compile scala code'
+
+  - script: sbt test
+    displayName: 'Test scala code'
