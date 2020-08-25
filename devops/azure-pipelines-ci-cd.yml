@@ -55,6 +55,8 @@ steps:
       dbfs rm dbfs:/FileStore/jars/streaming-dataops-scala_2.11-0.1.jar
       dbfs cp "./target/scala-2.11/streaming-dataops-scala_2.11-0.1.jar" dbfs:/FileStore/whls
     displayName: 'Upload jar file to DBFS(Databricks File System)'
+    # The cluster sometimes has started and previous step fails. So, we need this condition
+    condition: succeededOrFailed()
     env:
       DATABRICKS_HOST: $(databricks-host)
       DATABRICKS_TOKEN: $(databricks-token)
