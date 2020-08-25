@@ -1,5 +1,7 @@
+import com.dataops.functions.alert.{detect_overheat}
+
 object Main {
   def main(args : Array[String]): Unit ={
-    println("hello")
+    if(detect_overheat()) println("hello")
   }
 }
